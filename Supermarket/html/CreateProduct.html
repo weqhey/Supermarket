@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Product</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create a New Product</h1>
+    <!-- Display Error Message -->
+    <div class="error">
+        <!-- This script will display the error message if it exists in the URL query parameter -->
+        <script>
+            window.onload = function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const error = urlParams.get('error');
+                if (error) {
+                    document.querySelector('.error').textContent = error;
+                }
+            };
+        </script>
+    </div>
+
+    <!-- Product Creation Form -->
+    <form action="/addproduct" method="post">
+        <label for="name">Product Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="price">Price:</label><br>
+        <input type="text" id="price" name="price"><br>
+
+        <label for="category_id">Category ID:</label><br>
+        <input type="text" id="category_id" name="category_id"><br>
+
+        <label for="supplier_id">Supplier ID:</label><br>
+        <input type="text" id="supplier_id" name="supplier_id"><br>
+
+        <input type="submit" value="Create Product">
+    </form>
+</body>
+</html>
